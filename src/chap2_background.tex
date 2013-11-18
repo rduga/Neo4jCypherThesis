@@ -11,7 +11,7 @@
 
 \section{Domain specific languages}
 
-	\subsection{MPSypher DSL}
+	\subsection{Neo4jCypher DSL}
 
 
 
@@ -35,11 +35,25 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Design of MPSypher}
+\chapter{Design of Neo4jCypher}
 
 \section{Problem analysis}
 
 \section{Design decisions}
+
+\subsection{Projection editor}
+
+MPS Projection editor is a base approach of MPS to editing language. It differs from pure textual
+editors in these points:
+
+\begin{itemize}
+  \item Unparsable editor notation - editor is composed of cells, every cell represents some node of
+  the abstract syntax tree (AST)
+  \item Possible switching among multiple notations using alternative editors, where every editor
+  can show the AST in different way
+  \item Combine notations from different authors and be extensible. It is possible to extend MPS
+  languages, compose them and so on
+\end{itemize}
 
 \subsection{Text-like editor}
 
@@ -47,13 +61,41 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Implementation details of MPSypher language}
+\chapter{Implementation details of Neo4jCypher language}
 
 \section{Patterns}
 
 \section{References}
 
 \section{Integration into BaseLanguage}
+
+MPS has a big advantage that we not only can design the new language and create the full ide
+support for this language but also we can integrate this language into some existing language,
+extend it and provide the way to execute our code with possibility to debug our code.
+
+We chose these 4 steps, where each next step integrates the Neo4jCypher language more closely into
+its BaseLanguage:
+
+\begin{itemize}
+  \item Design Neo4jCypher queries in Query Sheet editor - editor with full ide support:
+  	\begin{itemize}
+  	  \item code completition with correct reference visibility and full cypher function list
+  	  \item intensions for query transformation, parts of query grouping, relationship
+  	  type conversion, properties definition
+  	  \item identifier uniquiness checking
+  	  \item items type checking where necessary
+  	\end{itemize} 
+  \item Generation of MPCypher query into BaseLanguage string type - this approach provides us
+  easy creation of query with full ide editor support. The next query manipulation depends on user's
+  will. User can store this query or execute it using Neo4j Execution Engine from Neo4j java
+  library.
+  \item Using CypherExecutor object which adds us easy access to execution of Neo4jCypher query
+  without need of implementation any further code from Neo4j java library. This approach tries to
+  provide very easy way to query the database without need to know any king of Cypher java
+  interface.
+\end{itemize}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Evaluation}
