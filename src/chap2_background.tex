@@ -3,33 +3,91 @@
 
 \section{NoSQL databases}
 
-	\subsection{Neo4j graph database}
+\subsection{Neo4j graph database}
 
-	\subsection{Neo4j Cypher query language}
+Neo4j is the most famous graph database system which is subset of NoSQL databases - databases which
+offer more expresiveness than the classic SQL databases. The graph database is consisted of nodes
+and relationships which gives us the power to query and update more complex expressions than in the
+classic table database approach and gives us helpful graph functions like function for
+searching shortest path and so. We chose this system because this system offers in addition to
+classical java api approach also the DSL approach - Cypher DSL language which gives us the more
+powerful tool to express what we want to process.
+
+\subsection{Neo4j Cypher query language}
+	
+Cypher is a declarative domain specific query language for Neo4j graph database. It offers high
+expressivity and efficient querying and updating of the graph in this database. It is designed both
+for developers and for domain exprerts, so the syntax of the language is easy to understand.
+
+\subsubsection{Syntax of Cypher}
+
+To understand the principles and problems of design and implementation of Neo4jCypher (Cypher
+implementation in MPS language workbench) we provide you the short overview of Cypher syntax.
+
+Cypher query language is composed of these basic clauses:
+
+\begin{itemize}
+  \item \texttt{START} - specifies starting inputs
+  \item \texttt{MATCH} - specifies pattern to match from starting nodes
+  \item \texttt{WHERE} - next filtering of matched nodes
+  \item \texttt{CREATE} - creates nodes, relationships
+  \item \texttt{DELETE} - deletes nodes, relationships
+  \item \texttt{SET} - updates nodes, relationships
+  \item \texttt{RETURN} - returns nodes, relationships, etc.
+\end{itemize}
+
+Now we give some examples of queries with explanation what they do:
+
+Read-Only Query:
+\lstset{language=SQL}
+\begin{lstlisting}
+START
+[MATCH]
+[WHERE]
+RETURN [ORDER BY] [SKIP] [LIMIT]
+\end{lstlisting}
+
+Write-Only Query:
+\begin{lstlisting}
+CREATE [UNIQUE]*
+[SET|DELETE|FOREACH]*
+[RETURN [ORDER BY] [SKIP] [LIMIT]]
+\end{lstlisting}  
+
+
+Read-Write Query:
+\begin{lstlisting}
+START
+[MATCH]
+[WHERE]
+[CREATE [UNIQUE]]*
+[SET|DELETE|FOREACH]*
+[RETURN [ORDER BY] [SKIP] [LIMIT]]
+\end{lstlisting}
 	
 %popsat jazyk Cypher (syntax, semantika, priklady, atd)
 
-\section{Domain specific languages}
+\section{Domain Specific Languages}
 
 	\subsection{Neo4jCypher DSL}
 
 
 
-\section{Language workbenches}
+\section{Language Workbenches}
 
 	\subsection{How to define DSL in MPS}
 
 
 
-\section{MPS Language workbench}
+\section{MPS Language Workbench}
 
-	\subsection{How to define DSL in MPS}
+	\subsection{How to Define DSL in MPS}
 
 		\subsubsection{Structure DSL}
 		\subsubsection{Editor DSL}
 		\subsubsection{Constraints DSL}
 		\subsubsection{Typesystem DSL}
-		\subsubsection{Intensions and other parts}
+		\subsubsection{Intensions and Other Parts}
 
 	\subsection{MPS Pros and Cons}
 
@@ -99,6 +157,9 @@ its BaseLanguage:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Evaluation}
+
+MPS platform is a robust tool for creating DSL languages
+
 
 \section{Experience with MPS}
 
